@@ -1,0 +1,618 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Ghxst Hub | Legends Of Speed ⚡",
+    LoadingTitle = "Ghxst Hub",
+    LoadingSubtitle = "by Angel?#1522",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "GhxstHub"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "ZFcGTGw9zH", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD.
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = true, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Ghxst Hub | Angel?#1522",
+       Subtitle = "Key System - Pass: ihatekeys",
+       Note = "Join the discord (discord.gg/mkTsnWTBhB)",
+       FileName = "GhxstKey",
+       SaveKey = true,
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "ihatekeys"
+    }
+})
+
+local Main = Window:CreateTab("Games", 4483362458)
+local Section = Main:CreateSection("Legends Of Speed ⚡")
+
+local Button = Main:CreateButton({
+   Name = "Normal Hub",
+   Callback = function()
+   getgenv().collectHoopsToggle = false
+   getgenv().collectOrbsToggle = false
+   getgenv().autoRebirth = false
+
+   function collectHoopsToggle() -- Auto Collects Hoops
+       spawn(function()
+           local playerHead = game.Players.LocalPlayer.Character.Head
+          while wait() do
+              if not getgenv().collectHoopsToggle then break end
+              for i, v in pairs(game:GetService("Workspace").Hoops:GetDescendants()) do
+                 if v.Name == "TouchInterest" and v.Parent then
+                     -- Fire the Touch Interest
+                     firetouchinterest(playerHead, v.Parent, 0)
+                      wait(0.01)
+                      firetouchinterest(playerHead, v.Parent, 1)
+                  end
+              end 
+          end
+       end)
+   end
+
+   function collectOrbsToggle() -- Auto Collects Orbs
+     spawn(function()
+         local playerHead = game.Players.LocalPlayer.Character.Head
+         while wait() do
+             if not getgenv().collectOrbsToggle then break end
+               for i, v in pairs(game:GetService("Workspace").orbFolder:GetDescendants()) do
+                   if v.Name == "TouchInterest" and v.Parent then
+                       -- Fire the Touch Interest
+                       firetouchinterest(playerHead, v.Parent, 1)
+                       wait(0.1)
+                      firetouchinterest(playerHead, v.Parent, 0)
+                  end
+              end
+           end
+      end)
+   end
+
+   function autoRebirth() -- Well it says auto rebirth, I'm sure we all know what that is
+     spawn(function() 
+         while wait(5) do
+               if not getgenv().autoRebirth then break end
+              local args = {[1] = "rebirthRequest"}
+             game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer(unpack(args))
+          end
+     end)
+   end
+
+   spawn(function() -- Anti AFK
+       local vu = game:GetService("VirtualUser")
+       game:GetService("Players").LocalPlayer.Idled:connect(function()
+       vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+       wait(1)
+      vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+     end) 
+   end)
+
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+
+local w = library:CreateWindow("Legends of Speed")
+
+local b = w:CreateFolder("AutoFarm")
+
+b:Toggle("Auto Hoops",function(bool)
+    getgenv().collectHoopsToggle = bool
+    print(shared.toggle)
+    if bool then
+        collectHoopsToggle()
+    end
+end)
+
+b:Toggle("Auto Collect",function(bool)
+    getgenv().collectOrbsToggle = bool
+    print(shared.toggle)
+    if bool then
+        collectOrbsToggle()
+    end
+end)
+
+b:Toggle("Auto Rebirth",function(bool)
+    getgenv().autoRebirth = bool
+    print(shared.toggle)
+    if bool then
+        autoRebirth()
+    end
+end)
+
+b:DestroyGui()
+   end,
+})
+
+local Button = Main:CreateButton({
+Name = "VG Hub",
+Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end,
+})
+
+local Button = Main:CreateButton({
+   Name = "Mr. Hakame",
+   Callback = function()
+   loadstring(game:HttpGet("https://pastebin.com/raw/1iMHrZ50", true))()
+   end,
+})
+
+local Button = Main:CreateButton({
+   Name = "Vynixius",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Legends%20Of%20Speed/Script.lua"))()
+   end,
+})
+
+local Button = Main:CreateButton({
+   Name = "Proxima Hub",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/TrixAde/Proxima-Hub/main/Main.lua"))()
+   end,
+})
+
+local Button = Main:CreateButton({
+   Name = "Speed Hub X",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Script--Game/main/Legends-of-speed"))()
+   end,
+})
+
+local Button = Main:CreateButton({
+    Name = "Mida Hub",
+    Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Mida%20Hub%20script", true))() 
+    end,
+})
+
+local Button = Main:CreateButton({
+    Name = "Memedog",
+    Callback = function()
+        local uwu = Instance.new("ScreenGui")
+        local Main = Instance.new("Frame")
+        local cre = Instance.new("TextLabel")
+        local step = Instance.new("TextButton")
+        local gems = Instance.new("TextButton")
+        local out = Instance.new("TextButton")
+        
+        uwu.Name = "uwu"
+        uwu.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+        uwu.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        uwu.ResetOnSpawn = false
+        
+        Main.Name = "Main"
+        Main.Parent = uwu
+        Main.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+        Main.Position = UDim2.new(0.604411781, 0, 0.214574918, 0)
+        Main.Size = UDim2.new(0, 193, 0, 148)
+        Main.Selectable = true
+        Main.Active = true
+        Main.Draggable = true
+        
+        cre.Name = "cre"
+        cre.Parent = Main
+        cre.BackgroundColor3 = Color3.new(0, 0, 0)
+        cre.BackgroundTransparency = 1
+        cre.Position = UDim2.new(-0.00310030137, 0, 0.870257616, 0)
+        cre.Size = UDim2.new(0, 193, 0, 19)
+        cre.Font = Enum.Font.SourceSans
+        cre.Text = "by Memedog#8352"
+        cre.TextColor3 = Color3.new(1, 1, 1)
+        cre.TextSize = 18
+        
+        
+        step.Name = "step"
+        step.Parent = Main
+        step.BackgroundColor3 = Color3.new(1, 1, 1)
+        step.Position = UDim2.new(0.1938546, 0, 0.19810304, 0)
+        step.Size = UDim2.new(0, 117, 0, 25)
+        step.Font = Enum.Font.SourceSans
+        step.Text = "Steps Farm"
+        step.TextColor3 = Color3.new(0, 0, 0)
+        step.TextSize = 18
+        step.MouseButton1Click:connect(function()
+            for i=1, 7500 do
+             local A_1 = "collectOrb"
+        local A_2 = "Red Orb"
+        local A_3 = "City"
+        local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent
+        Event:FireServer(A_1, A_2, A_3)
+        end
+        end)
+        
+        gems.Name = "gems"
+        gems.Parent = Main
+        gems.BackgroundColor3 = Color3.new(1, 1, 1)
+        gems.Position = UDim2.new(0.188673258, 0, 0.515670598, 0)
+        gems.Size = UDim2.new(0, 117, 0, 25)
+        gems.Font = Enum.Font.SourceSans
+        gems.Text = "Gems Farm"
+        gems.TextColor3 = Color3.new(0, 0, 0)
+        gems.TextSize = 18
+        gems.MouseButton1Click:connect(function()
+            for i=1, 1000 do
+             local A_1 = "collectOrb"
+        local A_2 = "Gem"
+        local A_3 = "City"
+        local Event = game:GetService("ReplicatedStorage").rEvents.orbEvent
+        Event:FireServer(A_1, A_2, A_3)
+        end
+        end)
+        
+        out.Name = "out"
+        out.Parent = Main
+        out.BackgroundColor3 = Color3.new(1, 1, 1)
+        out.BackgroundTransparency = 1
+        out.Position = UDim2.new(0.917098463, 0, 0, 0)
+        out.Size = UDim2.new(0, 16, 0, 18)
+        out.Font = Enum.Font.SourceSans
+        out.Text = "X"
+        out.TextColor3 = Color3.new(1, 0, 0)
+        out.TextSize = 20
+        out.MouseButton1Click:connect(function()
+            Main.Visible = false
+        end)
+        
+        _G.bruh = true
+        while _G.bruh do 
+            wait()
+        
+        for _,v in next, game.Workspace:GetDescendants() do
+        if v.Name == "outerOrb" then
+            v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            elseif v.Name == "outerGem" then
+                v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                elseif v.Name == "Hoop" then 
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            end
+        end
+        end 
+    end,
+ })
+
+ local Button = Main:CreateButton({
+    Name = "Rice Hub V2 (Load It Once Only)",
+    Callback = function()
+        repeat wait() until game:IsLoaded()
+        pcall(function()loadstring(game:HttpGet("https://raw.githubusercontent.com/fvyaefvuiawgfio/0R-G-gN-D--PnfF-b-IUZ8GBDB-G-/main/"..tostring(game.PlaceId)))()end) 
+    end,
+ })
+
+ local Button = Main:CreateButton({
+    Name = "Normal Hub V2   ",
+    Callback = function()
+        getgenv().collectOrbsToggle = true
+        getgenv().collectRingsToggle = true
+        getgenv().autoRebirth = true
+        getgenv().autoPurple = true
+        getgenv().autoRed = true
+        getgenv().autoBlue = true
+        getgenv().autoYellow = true
+        getgenv().autoLight = true
+        getgenv().autoSnow = true
+        getgenv().autoInferno = true
+        getgenv().autoLava = true
+        getgenv().autoElectro = true
+        local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+        local remotePath = game:GetService("ReplicatedStorage").rEvents
+        
+        local w = library:CreateWindow("Legends Of Speed")
+        local d = w:CreateFolder("Auto Grab Orbs")
+        local f = w:CreateFolder("Auto Rings")
+        local a = w:CreateFolder("Auto Rebirth")
+        local q = w:CreateFolder("Auto Crystal")
+        local s = w:CreateFolder("Teleports")
+        local i = w:CreateFolder("Info")
+        local b = w:CreateFolder("Credits")
+        local c = w:CreateFolder("Destroy GUI")
+        
+        function aOrbs()
+            spawn(function()
+                local playerHead = game.Players.LocalPlayer.Character.Head
+                        while wait() do
+                            if not getgenv().collectOrbsToggle then break end
+                            for i, v in pairs(game:GetService("Workspace").orbFolder:GetDescendants()) do
+                            if v.Name == "TouchInterest" and v.Parent then
+                            firetouchinterest(playerHead, v.Parent, 1)
+                            wait()
+                            firetouchinterest(playerHead, v.Parent,0)
+                            break
+                        end
+                    end
+                end
+            end)
+        end
+        
+        
+        
+        
+        
+        function aRings()
+            spawn(function()
+                local playerHead = game.Players.LocalPlayer.Character.Head
+                        while wait() do
+                            if not getgenv().collectRingsToggle then break end
+                            for i, v in pairs(game:GetService("Workspace").Hoops:GetDescendants()) do
+                            if v.Name == "TouchInterest" and v.Parent then
+                            firetouchinterest(playerHead, v.Parent, 1)
+                            wait()
+                            firetouchinterest(playerHead, v.Parent,0)
+                            break
+                        end
+                    end
+                end
+            end)
+        end
+        
+        
+        function aRebirth()
+            spawn(function()
+                while getgenv().autoRebirth == true do
+                    local args = {[1] = "rebirthRequest"}
+                    remotePath.rebirthEvent:FireServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aPurple()
+            spawn(function()
+                while getgenv().autoPurple == true do
+                    local args = {[1] = "openCrystal",[2] = "Purple Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aRed()
+            spawn(function()
+                while getgenv().autoRed == true do
+                    local args = {[1] = "openCrystal",[2] = "Red Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aBlue()
+            spawn(function()
+                while getgenv().autoBlue == true do
+                    local args = {[1] = "openCrystal",[2] = "Blue Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aYellow()
+            spawn(function()
+                while getgenv().autoYellow == true do
+                    local args = {[1] = "openCrystal",[2] = "Yellow Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aLight()
+            spawn(function()
+                while getgenv().autoLight == true do
+                    local args = {[1] = "openCrystal",[2] = "Lightning Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        function aSnow()
+            spawn(function()
+                while getgenv().autoSnow == true do
+                    local args = {[1] = "openCrystal",[2] = "Snow Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aInferno()
+            spawn(function()
+                while getgenv().autoInferno == true do
+                    local args = {[1] = "openCrystal",[2] = "Inferno Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aLava()
+            spawn(function()
+                while getgenv().autoLava == true do
+                    local args = {[1] = "openCrystal",[2] = "Lava Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        function aElectro()
+            spawn(function()
+                while getgenv().autoElectro == true do
+                    local args = {[1] = "openCrystal",[2] = "Electro Legends Crystal"}
+                    remotePath.openCrystalRemote:InvokeServer(unpack(args))
+                    wait()
+                end
+            end)
+        end
+        
+        
+        q:Label("Theres no egg animations",{
+            TextSize = 17; -- Self Explaining
+            TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+            BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+           
+        })
+        
+        
+        d:Toggle("Auto Grab Orbs", function (bool)
+                getgenv().collectOrbsToggle = bool
+                print('Auto Orb is: ', bool);
+                if bool then
+                aOrbs()
+            end
+        end)
+        
+        
+        f:Toggle("Auto Rings(slow)", function (bool)
+                getgenv().collectRingsToggle = bool
+                print('Auto Orb is: ', bool);
+                if bool then
+                aRings()
+            end
+        end)
+        
+        
+        a:Toggle("Auto Rebirth", function (bool)
+                getgenv().autoRebirth = bool
+                print('Auto Orb is: ', bool);
+                if bool then
+                aRebirth()
+            end
+        end)
+        
+        
+        
+        q:Toggle("Red Crystal", function (bool)
+                getgenv().autoRed = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aRed()
+            end
+        end)
+        
+        q:Toggle("Blue Crystal", function (bool)
+                getgenv().autoBlue = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aBlue()
+            end
+        end)
+        
+        q:Toggle("Purple Crystal", function (bool)
+                getgenv().autoPurple = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aPurple()
+            end
+        end)
+        
+        
+        q:Toggle("Yellow Crystal", function (bool)
+                getgenv().autoYellow = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aYellow()
+            end
+        end)
+        
+        q:Toggle("Lightning Crystal", function (bool)
+                getgenv().autoLight = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aLight()
+            end
+        end)
+        
+        q:Toggle("Snow Crystal", function (bool)
+                getgenv().autoSnow = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aSnow()
+            end
+        end)
+        
+        q:Toggle("Inferno Crystal", function (bool)
+                getgenv().autoInferno = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aInferno()
+            end
+        end)
+        
+        q:Toggle("Lava Crystal", function (bool)
+                getgenv().autoLava = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aLava()
+            end
+        end)
+        
+        q:Toggle("Electro Legends Crystal", function (bool)
+                getgenv().autoElectro = bool
+                print('Auto crystal is: ', bool);
+                if bool then
+                aElectro()
+            end
+        end)
+        
+        
+        i:Label("UI key is Right CTRL",{
+            TextSize = 17; -- Self Explaining
+            TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+            BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+           
+        })
+        
+        
+        
+        c:DestroyGui()
+        
+        print('made by toolzy#9999')
+        
+        
+        
+        
+        b:Button("toolzy#9999",function()
+            setclipboard("toolzy#9999")
+            toclipboard("toolzy#9999")
+        end)  
+        
+        
+        s:Button("Golden Chest", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-681.012146, 70.367691, -274.911133, 0.707134247, 0, 0.707079291, 0, 1, 0, -0.707079291, 0, 0.707134247)  
+        end)
+        s:Button("Enchanted Chest", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-593.039673, 78.3677063, 2130.06738, 0.996191859, 0, 0.0871884301, 0, 1, 0, -0.0871884301, 0, 0.996191859)  
+        end)
+        s:Button("Magma Chest", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2494.19556, 74.367691, 3981.54175, 0.642763317, -0, -0.766064942, 0, 1, -0, 0.766064942, 0, 0.642763317)  
+        end)
+        s:Button("Reward Cest 1", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1624.53259, 28.202322, -497.825592, 0.258864343, 0, 0.965913713, 0, 1, 0, -0.965913713, 0, 0.258864343)  
+        end)
+        s:Button("Reward Cest 2", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2497.65869, 26.2436581, -2133.52759, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)  
+        end)
+        s:Button("Reward Cest 3", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2235.75903, 321.167633, 1003.06476, 0.996191859, 0, 0.0871884301, 0, 1, 0, -0.0871884301, 0, 0.996191859)  
+        end)
+        s:Button("Reward Cest 4", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1561.51636, 108.683212, 5680.7373, -0.173636436, 0.00328794168, -0.984804392, 0.0182685666, 0.999833107, 0.000117084011, 0.984640479, -0.0179706328, -0.173667431)  
+        end)
+        s:Button("Group Chest", function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-479.203979, 14.665555, 402.61377, 0.0871419907, 2.0634383e-05, -0.996196032, -0.0868328214, 0.996194124, -0.00757506117, 0.992404461, 0.087162599, 0.0868121386)  
+        end)
+    end,
+ })
+
+
+Rayfield:LoadConfiguration()
